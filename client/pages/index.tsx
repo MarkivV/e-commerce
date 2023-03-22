@@ -11,6 +11,10 @@ export default function Home() {
               <li>sw</li>
               <li>sw</li>
           </ul>
+          <p>Lorem20</p>
+          <p>Lorem20</p>
+          <p>Lorem20</p>
+          <p>Lorem20</p>
       </>
   )
 }
