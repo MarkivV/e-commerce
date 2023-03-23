@@ -3,6 +3,8 @@ import CustomSlider from "@/components/CustomSlider";
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
+import ProductCard from "@/components/ProductCard";
+
 export default function Home() {
     const images = [
         'https://via.placeholder.com/1200x800?text=Slide+1',
@@ -65,6 +67,71 @@ export default function Home() {
                         <div className={styles.infoCardSub}>Без проблем та питань</div>
                     </div>
                 </div>
+            </div>
+
+            <div className={styles.cardCollectionTitle}>
+                <h2>Популярні товари</h2>
+            </div>
+            <div className={styles.productCardsContainer}>
+                <div className={styles.productCard}>
+                    <ProductCard
+                        name="Товар 1"
+                        price={999}
+                        description="Це дуже гарний товар"
+                        image="https://picsum.photos/300/300"
+                        isNew={true}
+                        isOnSale={false}
+                    />
+                </div>
+                <div className={styles.productCard}>
+                    <ProductCard
+                        name="Товар 2"
+                        price={799}
+                        description="Це ще один гарний товар"
+                        image="https://picsum.photos/300/300"
+                        isNew={false}
+                        isOnSale={true}
+                    />
+                </div><div className={styles.productCard}>
+                    <ProductCard
+                        name="Товар 1"
+                        price={999}
+                        description="Це дуже гарний товар"
+                        image="https://picsum.photos/300/300"
+                        isNew={true}
+                        isOnSale={false}
+                    />
+                </div>
+                <div className={styles.productCard}>
+                    <ProductCard
+                        name="Товар 2"
+                        price={799}
+                        description="Це ще один гарний товар"
+                        image="https://picsum.photos/300/300"
+                        isNew={false}
+                        isOnSale={true}
+                    />
+                </div><div className={styles.productCard}>
+                    <ProductCard
+                        name="Товар 1"
+                        price={999}
+                        description="Це дуже гарний товар"
+                        image="https://picsum.photos/300/300"
+                        isNew={true}
+                        isOnSale={false}
+                    />
+                </div>
+                <div className={styles.productCard}>
+                    <ProductCard
+                        name="Товар 2"
+                        price={799}
+                        description="Це ще один гарний товар"
+                        image="https://picsum.photos/300/300"
+                        isNew={false}
+                        isOnSale={true}
+                    />
+                </div>
+
             </div>
         </div>
     );

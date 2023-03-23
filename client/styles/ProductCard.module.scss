@@ -1,0 +1,143 @@
+.productCard {
+  position: relative;
+  background-color: #fff;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  //border-radius: 5px;
+  overflow: hidden;
+
+  .productCardImage {
+    height: 350px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:before {
+      content: '';
+      display: block;
+      padding-bottom: 100%;
+    }
+
+    .newFlag {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background-color: #1b71e7;
+      color: #fff;
+      padding: 13px 21px;
+      border-radius: 5px;
+      font-size: 16px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .saleFlag {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background-color: #f44336;
+      color: #fff;
+      padding: 13px 21px;
+      border-radius: 4px;
+      font-size: 16px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+  }
+
+  .productCardBody {
+    padding: 16px;
+  }
+
+  .productCardHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+
+  .productCardTitle {
+    font-size: 18px;
+    font-weight: 700;
+    color: #333;
+    margin-right: 8px;
+  }
+
+  .bookmarkButton {
+    background-color: transparent;
+    border: none;
+    color: #ccc;
+    font-size: 24px;
+    padding: 0;
+    cursor: pointer;
+
+    &:hover {
+      color: #1b71e7;
+    }
+  }
+
+  .productCardDescription {
+    margin-bottom: 8px;
+
+    p {
+      font-size: 14px;
+      color: #666;
+      margin: 0;
+    }
+  }
+
+  .productCardPrice {
+    display: flex;
+    align-items: center;
+
+    .oldPrice {
+      font-size: 14px;
+      text-decoration: line-through;
+      color: #999;
+      margin-right: 8px;
+    }
+
+    .price {
+      font-size: 24px;
+      font-weight: 700;
+      color: #1b71e7;
+    }
+  }
+
+  .productCardActions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 16px;
+  }
+
+  .cartButton {
+    background-color: #1b71e7;
+    color: #fff;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #145db6;
+    }
+
+  }
+
+  .rating {
+    display: flex;
+    align-items: center;
+  }
+
+  .starIcon {
+    color: #ffbf00;
+    font-size: 16px;
+    margin-right: 4px;
+  }
+}
