@@ -4,7 +4,7 @@ import Navbar from "@/components/Navbar";
 import styles from "./../styles/LayoutMain.module.scss"
 import NavbarBottom from "@/components/NavbarBottom";
 
-const LayoutMain = () => {
+const LayoutMain = ({children}) => {
     return (
         <div className={styles.wrap}>
             <Head>
@@ -21,6 +21,9 @@ const LayoutMain = () => {
             </Head>
             <Navbar/>
             <NavbarBottom/>
+            <div >
+                <div>{children}</div>
+            </div>
         </div>
     );
 };

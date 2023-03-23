@@ -1,15 +1,15 @@
 .wrap {
-
   display: flex;
   align-items: center;
   margin-top: 15px;
   width: 100%;
-  gap: 5%;
-
+  gap: 3%;
   .categories {
     text-align: left;
-    max-width: 20%;
+    max-width: 23%;
     display: block;
+    padding-left: 20px;
+    padding-right: 20px;
     flex-basis: 0;
     flex-grow: 1;
     flex-shrink: 0;
@@ -32,40 +32,68 @@
     flex-grow: 1;
     flex-shrink: 0;
     justify-content: center;
-    width: 50%;
-    .searchDiv{
+    width: 100%;
+    .searchDiv {
+      display: flex;
+      align-items: center;
 
-      input{
+      input {
         display: inline-block;
+        box-sizing: border-box;
         border: 1px solid #b9b9b9;
         height: 55px;
-        width: 84%;
+        width: 80%;
         border-radius: 5px 0 0 5px;
         text-indent: 10px;
       }
-      .searchButton{
+
+      .searchButton {
         display: inline-block;
+        box-sizing: border-box;
         height: 55px;
         width: 15%;
-        border: 1px solid #1b71e7;
+        border: 1px solid #1b71e7; /* Same border width as the input */
         border-radius: 0 5px 5px 0;
         font-size: 16px;
         background-color: #1b71e7;
         color: #fff;
-        &:hover{
+
+        h2{
+          font-size: 14px;
+        }
+
+        &:hover {
           cursor: pointer;
         }
       }
     }
+
   }
 
   .activities{
-    max-width: 20%;
-    display: block;
+    max-width: 15%;
     flex-basis: 0;
     flex-grow: 1;
     flex-shrink: 0;
-    text-align: center;
+    display: flex;
+    align-items: center;
+    gap: 100px;
+    justify-content: center;
+
+    h2{
+      font-size: 14px;
+    }
+
+    div{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      &:hover{
+        cursor: pointer;
+      }
+    }
+
   }
 
 }

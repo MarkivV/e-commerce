@@ -1,0 +1,53 @@
+// components/CustomImageSlider.module.scss
+
+.carousel {
+  width: 71.5%;
+  height: 500px;
+  position: relative;
+  border-radius: 5px;
+  .slick-list {
+    height: 500px;
+  }
+
+  .slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 500px;
+    object-fit: cover;
+
+    img {
+      border-radius: 5px;
+      object-fit: cover;
+      height: 500px;
+      width: 100%;
+    }
+  }
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  width: 40px;
+  height: 40px;
+  color: white;
+  font-size: 20px;
+  text-align: center;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 1px solid #1b71e7;
+
+  &:hover {
+    background-color: #1b71e7;
+  }
+}
+
+.prev {
+  left: 10px;
+}
+
+.next {
+  right: 10px;
+}

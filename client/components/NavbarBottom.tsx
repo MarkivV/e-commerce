@@ -1,7 +1,7 @@
 import React from 'react';
 import {inspect} from "util";
 import styles from "./../styles/NavbarBottom.module.scss"
-import BookmarkIcon from '@mui/icons-material/Bookmark';
+import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 import LocalMallOutlinedIcon from '@mui/icons-material/LocalMallOutlined';
 const NavbarBottom = () => {
     return (
@@ -14,12 +14,20 @@ const NavbarBottom = () => {
             <div className={styles.searchBar}>
                 <div className={styles.searchDiv}>
                     <input type="text" placeholder={"Пошук"}/>
-                    <input type={"submit"} className={styles.searchButton} placeholder={"Знайти"}/>
+                    <button className={styles.searchButton}>
+                        <h2>Знайти</h2>
+                    </button>
                 </div>
             </div>
             <div className={styles.activities}>
-                <BookmarkIcon/>
-                <LocalMallOutlinedIcon/>
+                <div>
+                    <BookmarkBorderIcon style={{fontSize: "36px", color: "#1b71e7"}}/>
+                    <h2>Закладки</h2>
+                </div>
+                <div>
+                    <LocalMallOutlinedIcon style={{fontSize: "36px", color: "#1b71e7"}}/>
+                    <h2>Кошик</h2>
+                </div>
             </div>
         </div>
     );
