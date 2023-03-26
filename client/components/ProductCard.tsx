@@ -11,7 +11,7 @@ interface Props {
     isOnSale: boolean;
 }
 
-const ProductCard: FC<Props> = ({name, price, description, image, isNew, isOnSale}) => {
+const ProductCard: FC<Props> = ({name, price, salePrice, description, image, isNew, isOnSale}) => {
     return (
         <div className={styles.productCard}>
             <div
@@ -41,7 +41,7 @@ const ProductCard: FC<Props> = ({name, price, description, image, isNew, isOnSal
                 </div>
                 <div className={styles.productCardPrice}>
                     {isOnSale && (
-                        <span className={styles.oldPrice}>1200 грн</span>
+                        <span className={styles.oldPrice}>{salePrice} грн</span>
                     )}
                     <span className={styles.price}>{price} грн</span>
                 </div>

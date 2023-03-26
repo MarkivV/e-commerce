@@ -1,0 +1,37 @@
+.deliveryContainer {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  .deliveryTitle {
+    margin-top: 0;
+    color: #1b71e7;
+    font-size: 2rem;
+    font-weight: bold;
+  }
+
+  .deliveryItem {
+    width: 100%;
+    margin-top: 2rem;
+    padding: 50px 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    background-color: #fff;
+  }
+
+  .deliveryItemTitle {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    color: #1b71e7;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
+  .deliveryItemDescription {
+    margin-top: 0;
+    color: #333;
+    font-size: 1.2rem;
+    line-height: 1.5;
+  }
+}
+
+

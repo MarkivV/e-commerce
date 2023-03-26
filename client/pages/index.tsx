@@ -23,6 +23,25 @@ export default function Home() {
         { name: 'Всі категорії', logo: 'all-categories' },
     ];
 
+
+
+    const products = [
+        {name: "Товар", description: "Це новий товар", price: 999, salePrice: 6200, image: "https://picsum.photos/300/300", isNew: true, isOnSale: false},
+        {name: "Товар", description: "Це новий товар", price: 1099, salePrice: 2200, image: "https://picsum.photos/300/300", isNew: false, isOnSale: false},
+        {name: "Товар", description: "Це новий товар", price: 2399, salePrice: 3200, image: "https://picsum.photos/300/300", isNew: true, isOnSale: false},
+        {name: "Товар", description: "Це новий товар", price: 1199, salePrice: 3100, image: "https://picsum.photos/300/300", isNew: false, isOnSale: true},
+        {name: "Товар", description: "Це новий товар", price: 979, salePrice: 1330, image: "https://picsum.photos/300/300", isNew: true, isOnSale: false},
+        {name: "Товар", description: "Це новий товар", price: 593, salePrice: 800, image: "https://picsum.photos/300/300", isNew: false, isOnSale: true},
+        {name: "Товар", description: "Це новий товар", price: 595, salePrice: 770, image: "https://picsum.photos/300/300", isNew: true, isOnSale: false},
+        {name: "Товар", description: "Це новий товар", price: 699, salePrice: 890, image: "https://picsum.photos/300/300", isNew: false, isOnSale: true},
+        {name: "Товар", description: "Це новий товар", price: 799, salePrice: 1300, image: "https://picsum.photos/300/300", isNew: true, isOnSale: false},
+        {name: "Товар", description: "Це новий товар", price: 899, salePrice: 1199, image: "https://picsum.photos/300/300", isNew: false, isOnSale: true},
+        {name: "Товар", description: "Це новий товар", price: 1099, salePrice: 1202, image: "https://picsum.photos/300/300", isNew: true, isOnSale: false},
+        {name: "Товар", description: "Це новий товар", price: 2099, salePrice: 3230, image: "https://picsum.photos/300/300", isNew: false, isOnSale: true},
+        {name: "Товар", description: "Це новий товар", price: 1599, salePrice: 2220, image: "https://picsum.photos/300/300", isNew: false, isOnSale: false},
+        {name: "Товар", description: "Це новий товар", price: 2399, salePrice: 4200, image: "https://picsum.photos/300/300", isNew: true, isOnSale: false}
+    ]
+
     return (
         <div className={styles.wrap}>
             <div className={styles.upperBlock}>
@@ -42,8 +61,8 @@ export default function Home() {
                 <div className={styles.infoCard}>
                     <div className={styles.infoCardLogo}>Logo 1</div>
                     <div className={styles.infoCardInfo}>
-                        <div className={styles.infoCardMain}>Працюємо з Пн по Пт/з 07:00 до 19:00</div>
-                        <div className={styles.infoCardSub}>увімкнено вихідні</div>
+                        <div className={styles.infoCardMain}>Працюємо з Пн по Пт</div>
+                        <div className={styles.infoCardSub}>з 07:00 до 19:00</div>
                     </div>
                 </div>
                 <div className={styles.infoCard}>
@@ -73,65 +92,58 @@ export default function Home() {
                 <h2>Популярні товари</h2>
             </div>
             <div className={styles.productCardsContainer}>
-                <div className={styles.productCard}>
-                    <ProductCard
-                        name="Товар 1"
-                        price={999}
-                        description="Це дуже гарний товар"
-                        image="https://picsum.photos/300/300"
-                        isNew={true}
-                        isOnSale={false}
-                    />
-                </div>
-                <div className={styles.productCard}>
-                    <ProductCard
-                        name="Товар 2"
-                        price={799}
-                        description="Це ще один гарний товар"
-                        image="https://picsum.photos/300/300"
-                        isNew={false}
-                        isOnSale={true}
-                    />
-                </div><div className={styles.productCard}>
-                    <ProductCard
-                        name="Товар 1"
-                        price={999}
-                        description="Це дуже гарний товар"
-                        image="https://picsum.photos/300/300"
-                        isNew={true}
-                        isOnSale={false}
-                    />
-                </div>
-                <div className={styles.productCard}>
-                    <ProductCard
-                        name="Товар 2"
-                        price={799}
-                        description="Це ще один гарний товар"
-                        image="https://picsum.photos/300/300"
-                        isNew={false}
-                        isOnSale={true}
-                    />
-                </div><div className={styles.productCard}>
-                    <ProductCard
-                        name="Товар 1"
-                        price={999}
-                        description="Це дуже гарний товар"
-                        image="https://picsum.photos/300/300"
-                        isNew={true}
-                        isOnSale={false}
-                    />
-                </div>
-                <div className={styles.productCard}>
-                    <ProductCard
-                        name="Товар 2"
-                        price={799}
-                        description="Це ще один гарний товар"
-                        image="https://picsum.photos/300/300"
-                        isNew={false}
-                        isOnSale={true}
-                    />
-                </div>
-
+                {
+                    products.slice(0,8).map((item)=>(
+                        <div className={styles.productCard} key={item.price}>
+                            <ProductCard
+                                name={item.name}
+                                price={item.price}
+                                description={item.description}
+                                image={item.image}
+                                isNew={item.isNew}
+                                isOnSale={item.isOnSale}
+                            />
+                        </div>
+                    ))
+                }
+            </div>
+            <div className={styles.cardCollectionTitle}>
+                <h2>Нові надходження</h2>
+            </div>
+            <div className={styles.productCardsContainer}>
+                {
+                    products.slice(0,8).map((item)=>(
+                        <div className={styles.productCard} key={item.price}>
+                            <ProductCard
+                                name={item.name}
+                                price={item.price}
+                                description={item.description}
+                                image={item.image}
+                                isNew={item.isNew}
+                                isOnSale={item.isOnSale}
+                            />
+                        </div>
+                    ))
+                }
+            </div>
+            <div className={styles.cardCollectionTitle}>
+                <h2>Акції</h2>
+            </div>
+            <div className={styles.productCardsContainer}>
+                {
+                    products.slice(0,8).map((item)=>(
+                        <div className={styles.productCard} key={item.price}>
+                            <ProductCard
+                                name={item.name}
+                                price={item.price}
+                                description={item.description}
+                                image={item.image}
+                                isNew={item.isNew}
+                                isOnSale={item.isOnSale}
+                            />
+                        </div>
+                    ))
+                }
             </div>
         </div>
     );

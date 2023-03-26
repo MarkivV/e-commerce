@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from "./../styles/Navbar.module.scss"
+import Link from "next/link";
 
 const Navbar = () => {
     return (
@@ -62,9 +63,9 @@ const Navbar = () => {
             <div className={styles.categories}>
                 <ul>
                     <li>Акції</li>
-                    <li>Про нас</li>
+                    <Link href={"/about"}><li>Про нас</li></Link>
                     <li>Контакти</li>
-                    <li>Доставка</li>
+                    <Link href={"/delivery"}><li>Доставка</li></Link>
                     <li>Блог</li>
                     <li>Оплата</li>
                 </ul>
