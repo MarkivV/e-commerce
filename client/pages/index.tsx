@@ -102,6 +102,7 @@ export default function Home() {
                                 image={item.image}
                                 isNew={item.isNew}
                                 isOnSale={item.isOnSale}
+                                salePrice={item.salePrice}
                             />
                         </div>
                     ))

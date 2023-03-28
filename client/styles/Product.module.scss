@@ -1,0 +1,310 @@
+@import './../assets/_variables.scss';
+
+.product {
+
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  font-family: $font-family;
+
+  .top {
+    display: flex;
+    margin-bottom: 2rem;
+
+    .imageContainer {
+      width: 50%;
+      padding-right: 2rem;
+
+      .image {
+        width: 100%;
+        object-fit: cover;
+      }
+    }
+
+    .details {
+      width: 50%;
+
+      .brand {
+        font-size: 1rem;
+        text-decoration: underline;
+        font-weight: 400;
+        text-transform: uppercase;
+        margin-bottom: 0.5rem;
+      }
+
+      .title {
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin-bottom: 1rem;
+      }
+
+      .rating {
+        display: flex;
+        margin-bottom: 1rem;
+
+        .star {
+          width: 1rem;
+          height: 1rem;
+          background-image: url(./../assets/star.svg);
+          background-size: cover;
+          margin-right: 0.25rem;
+
+          &:last-child {
+            margin-right: 0;
+          }
+        }
+      }
+
+      .description {
+        margin-bottom: 1rem;
+      }
+
+      .sticker {
+        display: inline-block;
+        font-size: 0.8rem;
+        font-weight: bold;
+        color: $white;
+        background-color: $primary-color;
+        padding: 0.25rem 0.5rem;
+        border-radius: 0.25rem;
+        margin-right: 0.5rem;
+      }
+
+      .prices {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        margin-bottom: 1rem;
+
+        .price {
+          font-size: 1.25rem;
+          font-weight: bold;
+          margin-right: 1rem;
+
+          s {
+            color: $gray;
+          }
+        }
+
+        .salePrice {
+          font-size: 1.25rem;
+          font-weight: bold;
+          color: red;
+
+          .save {
+            font-size: 0.8rem;
+            color: $gray;
+          }
+        }
+
+        .availability {
+          font-size: 0.8rem;
+          font-weight: bold;
+          margin-right: 1rem;
+
+          &.available {
+            color: $green;
+          }
+
+          &.notAvailable {
+            color: $red;
+          }
+        }
+
+        .code {
+          font-size: 0.8rem;
+        }
+      }
+
+      .cartButton,
+      .favoriteButton {
+        font-size: 0.8rem;
+        font-weight: bold;
+        color: $white;
+        background-color: $primary-color;
+        padding: 0.5rem 1rem;
+        border: none;
+        border-radius: 0.25rem;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+          background-color: darken($primary-color, 10%);
+        }
+
+        & + & {
+          margin-left: 0.5rem;
+        }
+      }
+    }
+  }
+
+  .bottom {
+    .tabs {
+      display: flex;
+      border-bottom: 1px solid $light-gray;
+      margin-bottom: 2rem;
+
+      .tab {
+        font-size: 1rem;
+        font-weight: bold;
+        padding: 0.5rem 1rem;
+        cursor: pointer;
+        transition: color 0.3s ease;
+
+        &:hover {
+          color: $primary-color;
+        }
+
+        & + & {
+
+          margin-left: 1rem;
+        }
+      }
+    }
+
+    .tabContent {
+      .features {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2rem;
+
+        .feature {
+          width: 50%;
+
+          .featureName {
+            font-weight: bold;
+            margin-right: 0.5rem;
+          }
+
+          .featureValue {
+            color: $gray;
+          }
+        }
+      }
+
+      .brandDescription {
+        margin-bottom: 2rem;
+
+        p {
+          margin-bottom: 1rem;
+
+          &:last-child {
+            margin-bottom: 0;
+          }
+        }
+      }
+
+      .reviews {
+        .rating {
+          display: flex;
+          align-items: center;
+          margin-bottom: 2rem;
+
+          .ratingBar {
+            width: 100px;
+            height: 1rem;
+            background-color: $light-gray;
+            margin-right: 1rem;
+
+            .ratingValue {
+              height: 100%;
+              background-color: $primary-color;
+            }
+          }
+
+          .ratingCount {
+            font-size: 0.8rem;
+            font-weight: bold;
+          }
+        }
+
+        .reviewForm {
+          margin-bottom: 2rem;
+
+          .formTitle {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+          }
+
+          .formRow {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+
+            .formLabel {
+              width: 100px;
+              font-weight: bold;
+            }
+
+            .formInput,
+            .formTextarea {
+              width: 100%;
+              padding: 0.5rem;
+              border: 1px solid $light-gray;
+              border-radius: 0.25rem;
+            }
+
+            .formTextarea {
+              resize: vertical;
+              min-height: 100px;
+            }
+          }
+
+          .formSelect {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid $light-gray;
+            border-radius: 0.25rem;
+            appearance: none;
+          }
+
+          .formSubmitButton {
+            font-size: 0.8rem;
+            font-weight: bold;
+            color: $white;
+            background-color: $primary-color;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 0.25rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+
+            &:hover {
+              background-color: darken($primary-color, 10%);
+            }
+          }
+        }
+
+        .reviewList {
+          .review {
+            padding: 1rem;
+            border: 1px solid $light-gray;
+            border-radius: 0.25rem;
+            margin-bottom: 1rem;
+
+            .reviewHeader {
+              display: flex;
+              justify-content: space-between;
+              margin-bottom: 0.5rem;
+
+              .reviewAuthor {
+                font-weight: bold;
+              }
+
+              .reviewDate {
+                font-size: 0.8rem;
+                color: $gray;
+              }
+            }
+
+            .reviewBody {
+              color: $gray;
+            }
+          }
+        }
+      }
+    }
+  }
+}
