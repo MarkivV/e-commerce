@@ -1,0 +1,229 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Permission {
+  MANAGE_PRODUCT
+}
+
+model AdminType {
+  id           String       @id @default(uuid())
+  name         String       @unique @db.VarChar(256)
+  persmissions Permission[]
+  adminUsers   AdminUser[]
+  createdAt    DateTime     @default(now())
+  updatedAt    DateTime     @updatedAt
+}
+
+model AdminUser {
+  id           String    @id @default(uuid())
+  email        String    @unique @db.VarChar(256)
+  passwordHash String    @db.VarChar(256)
+  firstName    String    @db.VarChar(256)
+  lastName     String    @db.VarChar(256)
+  lastLogin    DateTime
+  adminType    AdminType @relation(fields: [adminTypeId], references: [id])
+  adminTypeId  String
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+}
+
+model User {
+  id              String            @id @default(uuid())
+  email           String            @unique @db.VarChar(256)
+  passwordHash    String            @db.VarChar(256)
+  firstName       String            @db.VarChar(256)
+  lastName        String            @db.VarChar(256)
+  phoneNumber     String            @unique @db.VarChar(32)
+  emailConfirmed  Boolean           @default(false)
+  phoneConfirmed  Boolean           @default(false)
+  mailingList     Boolean           @default(false)
+  productFeedback ProductFeedback[]
+  userAddresses   UserAddress[]
+  userPayments    UserPayment[]
+  shoppingSession ShoppingSession?
+  watchProducts   WatchProduct[]
+  order           Order?
+  createdAt       DateTime          @default(now())
+  updatedAt       DateTime          @updatedAt
+}
+
+model UserAddress {
+  id          String  @id @default(uuid())
+  address     String  @db.VarChar(256)
+  city        String  @db.VarChar(64)
+  country     String  @db.VarChar(64)
+  postalCode  String  @db.VarChar(12)
+  phoneNumber String? @db.VarChar(18)
+  user        User    @relation(fields: [userId], references: [id]) // In the following example, you can create a Post without assigning a User:
+  userId      String
+}
+
+model UserPayment {
+  id          String   @id @default(uuid())
+  paymentType String   @db.VarChar(32)
+  provider    String   @db.VarChar(64)
+  accountNo   Int // ?
+  expiry      DateTime
+  user        User     @relation(fields: [userId], references: [id])
+  userId      String
+}
+
+model WatchProduct {
+  user      User    @relation(fields: [userId], references: [id])
+  userId    String
+  product   Product @relation(fields: [productId], references: [id])
+  productId String
+
+  @@id([userId, productId])
+}
+
+model ShoppingSession {
+  id         String     @id @default(uuid())
+  user       User       @relation(fields: [userId], references: [id])
+  userId     String     @unique
+  totalPrice Decimal    @default(0)
+  cartItems  CartItem[]
+  createdAt  DateTime   @default(now())
+  updatedAt  DateTime   @updatedAt
+}
+
+model CartItem {
+  id                String          @id @default(uuid())
+  quantity          Int             @default(0)
+  product           Product         @relation(fields: [productId], references: [id])
+  productId         String          @unique
+  shoppingSession   ShoppingSession @relation(fields: [shoppingSessionId], references: [id])
+  shoppingSessionId String
+  createdAt         DateTime        @default(now())
+  updatedAt         DateTime        @updatedAt
+}
+
+model Order {
+  id               String         @id @default(uuid())
+  user             User           @relation(fields: [userId], references: [id])
+  userId           String         @unique
+  paymentDetails   PaymentDetails @relation(fields: [paymentDetailsId], references: [id])
+  paymentDetailsId String         @unique
+  OrderItems       OrderItems[]
+  totalPrice       Decimal        @default(0)
+  createdAt        DateTime       @default(now())
+  updatedAt        DateTime       @updatedAt
+}
+
+model OrderItems {
+  id        String   @id @default(uuid())
+  order     Order    @relation(fields: [orderId], references: [id])
+  orderId   String
+  product   Product  @relation(fields: [productId], references: [id])
+  productId String   @unique
+  quantity  Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model PaymentDetails {
+  id        String   @id @default(uuid())
+  orderId   String
+  amount    Int
+  provider  String
+  status    String
+  Order     Order? // ?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Product {
+  id                 String            @id @default(uuid())
+  name               String            @unique @db.VarChar(256)
+  cartItem           CartItem?
+  productFeedback    ProductFeedback[]
+  productCategory    ProductCategory   @relation(fields: [productCategoryId], references: [id])
+  productCategoryId  String
+  brand              Brand             @relation(fields: [brandId], references: [id])
+  brandId            String
+  productInventory   ProductInventory? @relation(fields: [productInventoryId], references: [id])
+  productInventoryId String?
+  discount           Discount?         @relation(fields: [discountId], references: [id])
+  discountId         String?           @unique
+  watchProducts      WatchProduct[]
+  OrderItems         OrderItems?
+  description        String            @db.Text
+  SKU                String
+  price              Decimal
+  rating             Decimal           @default(0)
+  prettyUrl          String
+  createdAt          DateTime          @default(now())
+  updatedAt          DateTime          @updatedAt
+}
+
+model ProductFeedback {
+  id        String   @id @default(uuid())
+  body      String   @db.Text
+  user      User     @relation(fields: [userId], references: [id])
+  userId    String
+  Product   Product  @relation(fields: [productId], references: [id])
+  productId String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model ProductCategory {
+  id                   String               @id @default(uuid())
+  name                 String               @unique @db.VarChar(64)
+  products             Product[]
+  productSubcategories ProductSubcategory[]
+  description          String               @db.Text
+  createdAt            DateTime             @default(now())
+  updatedAt            DateTime             @updatedAt
+}
+
+model ProductSubcategory {
+  id                String          @id @default(uuid())
+  name              String          @unique @db.VarChar(64)
+  categoryId        String
+  description       String          @db.Text
+  productCategory   ProductCategory @relation(fields: [productCategoryId], references: [id])
+  productCategoryId String
+  createdAt         DateTime        @default(now())
+  updatedAt         DateTime        @updatedAt
+}
+
+model Brand {
+  id       String    @id @default(uuid())
+  name     String    @unique @db.VarChar(64)
+  products Product[]
+}
+
+model ProductInventory {
+  id        String    @id @default(uuid())
+  products  Product[]
+  quantity  Int
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+model Discount {
+  id              String   @id @default(uuid())
+  name            String
+  description     String
+  discountPercent Decimal
+  active          Boolean  @default(false)
+  product         Product?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  productId       String
+}
+
+model Filter {
+  id String @id @default(uuid())
+}
+
+model ProductCharachteristics {
+  id String @id @default(uuid())
+}
